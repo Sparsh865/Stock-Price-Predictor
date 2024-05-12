@@ -1,10 +1,13 @@
-Python version 3.11.9
+# Stock Price Predictor
 
-How to run the project?
-Clone or download this repository to your local machine.
+![Python](https://img.shields.io/badge/Python-3.8-blueviolet)
+![Framework](https://img.shields.io/badge/Framework-sreamlit-red)
 
-Install all the libraries mentioned in the requirements.txt file with the command pip3 install -r requirements.txt
+## Python version 3.11.9
 
-Open your terminal/command prompt from your project directory and run the file app.py by executing the command streamlit run app.py.
+## How to run the project?
 
-You will be automatically redirected the your localhost in brower where you can see you WebApp in live.
+1. Clone or download this repository to your local machine.
+2. Install all the libraries mentioned in the [requirements.txt](https://github.com/everydaycodings/Anima-Recommendation-System-WebApp/blob/master/requirements.txt) file with the command `pip3 install -r requirements.txt`
+3. Open your terminal/command prompt from your project directory and run the file `app.py` by executing the command `streamlit run app.py`.
+4. You will be automatically redirected the your localhost in brower where you can see you WebApp in live.
