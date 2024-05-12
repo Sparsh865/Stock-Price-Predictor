@@ -2,7 +2,6 @@ numpy
 pandas
 tensorflow
 keras
-yahoofinancials
 yfinance 
 streamlit
 matplotlib
