@@ -16,7 +16,7 @@ print("Streamlit title set.")
 user_input = st.text_input("Enter Stock Ticker" , 'AAPL')
 print("User input received:", user_input)
 
-df = yf.download(user_input , start = '2019-01-01' , end = '2023-06-12' , progress = False)
+df = yf.download(user_input , start = '2020-01-01' , end = '2023-12-31' , progress = False)
 
 df.to_excel("Dow 30.xlsx")
 
@@ -69,24 +69,27 @@ st.write(df.describe())
 st.subheader('Closing Price vs Time Chart')
 print("Plotting Closing Price vs Time Chart.")
 fig = plt.figure(figsize = (12 , 6))
-plt.plot(df.Close)
+plt.plot(df.Close,'b',label ='Closing Price')
+plt.legend()
 st.pyplot(fig)
 
-st.subheader('Closing Price vs Time chart with 100MA and 200MA')
+st.subheader('Closing Price vs Time chart with 100MA')
 print("Plotting Closing Price vs Time chart with 100MA.")
 ma100 = df.Close.rolling(100).mean()
 fig = plt.figure(figsize = (12 , 6))
-plt.plot(ma100)
-plt.plot(df.Close)
+plt.plot(ma100,'r', label="Moving Average 100")
+plt.plot(df.Close,'b',label ='Closing Price')
+plt.legend()
 st.pyplot(fig)
 
 st.subheader('Closing Price vs Time chart with 100MA and 200MA')
 print("Plotting Closing Price vs Time chart with 200MA.")
 ma200 = df.Close.rolling(200).mean()
 fig = plt.figure(figsize = (12 , 6))
-plt.plot(ma100)
-plt.plot(ma200)
-plt.plot(df.Close)
+plt.plot(ma100,'r', label="Moving Average 100")
+plt.plot(ma200,'y', label="Moving Average 200")
+plt.plot(df.Close,'b',label ='Closing Price')
+plt.legend()
 st.pyplot(fig)
 
 print("All visualizations plotted successfully.")
@@ -94,16 +97,8 @@ print("All visualizations plotted successfully.")
 
 ############ SPLITTING DATA FOR TRAINING AND TESTING ############# 
 print("Splitting data into training and testing")
-
 data_training = pd.DataFrame(df["Close"][0:int(len(df) * 0.70)])
 data_testing = pd.DataFrame(df["Close"][int(len(df)*0.70) : int(len(df))])
-
-print("data training: ")
-print(data_training)
-
-print("data testing: ")
-print(data_testing)
-
 print("Data split into training and testing sets.")
 
 from sklearn.preprocessing import MinMaxScaler 
@@ -123,21 +118,14 @@ final_df = final_df.iloc[:, -1].to_frame()
 
 print("Created final dataframe for testing.")
 print(final_df.head())
-
-
 input_data = scaler.fit_transform(final_df)
-
 scaled_data = scaler.fit_transform(final_df)
 
 # Save the scaled data to a text file
 np.savetxt('scaled_data.txt', scaled_data, delimiter='\t')
 
 print("Scaled data saved to scaled_data.txt")
-
 print(input_data.shape)
-
-
-
 print("Scaled input data using MinMaxScaler.")
 
 x_test = []
@@ -150,21 +138,15 @@ for i in range(100 , input_data.shape[0]):
 x_test , y_test = np.array(x_test)  , np.array(y_test)
 
 print("Testing data prepared successfully.")
-
 print(x_test.shape)
-
-
 y_predicted = model.predict(x_test)
 print(x_test)
 
 print("Predictions made.")
-
 scaler = scaler.scale_ 
-
 scale_factor = 1 / scaler[0]
 y_predicted = y_predicted * scale_factor
 y_test = y_test * scale_factor
-
 print("Predictions scaled back to original values.")
 
 st.subheader("Predictions vs Original")
