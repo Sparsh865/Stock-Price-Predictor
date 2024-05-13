@@ -1,6 +1,6 @@
 # Stock Price Predictor
 
-![Python](https://img.shields.io/badge/Python-3.8-blueviolet)
+![Python](https://img.shields.io/badge/Python-3.11.9-blueviolet)
 ![Framework](https://img.shields.io/badge/Framework-sreamlit-red)
 
 ## Python version 3.11.9
