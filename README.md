@@ -11,3 +11,6 @@
 2. Install all the libraries mentioned in the [requirements.txt](https://github.com/everydaycodings/Anima-Recommendation-System-WebApp/blob/master/requirements.txt) file with the command `pip3 install -r requirements.txt`
 3. Open your terminal/command prompt from your project directory and run the file `app.py` by executing the command `streamlit run app.py`.
 4. You will be automatically redirected the your localhost in brower where you can see you WebApp in live.
+
+## Presentation
+[Canva](https://www.canva.com/design/DAGFFI8jry4/r0-05QpX8bF4mk3QXNncSA/view?utm_content=DAGFFI8jry4&utm_campaign=designshare&utm_medium=link&utm_source=editor)
